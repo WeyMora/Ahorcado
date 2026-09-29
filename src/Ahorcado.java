@@ -29,6 +29,20 @@ public class Ahorcado {
 
             System.out.println("Introduce una letra, por favor.");
             char letraIngresada = scanner.next().charAt(0);
+
+            boolean letraCorrecta = false;
+
+            for (int i = 0; i < letrasAdivinadas.length; i++) {
+                // Estructura de control condicional
+                if(letraIngresada == palabraSecreta.charAt(i)) {
+                    letrasAdivinadas[i] = letraIngresada;
+                    letraCorrecta = true;
+                }
+            }
+            if(!letraCorrecta) {
+                intentosActuales++;
+                System.out.println("Letra incorrecta! Te quedan " + (intentosMaximos - intentosActuales) + " intentos.");
+            }
         }
 
 
