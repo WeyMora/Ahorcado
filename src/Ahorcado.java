@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Ahorcado {
     public static void main(String[] args) throws Exception {
-        
+
         // Crear un objeto Scanner para leer la entrada del usuario
-        Scanner scanner = new Scanner(System.in);
+        Scanner registrarValorScanner = new Scanner(System.in);
         // Declaraciones y Asignaciones:
         String palabraSecreta = "programacion";
         int intentosMaximos = 6;
@@ -12,10 +12,10 @@ public class Ahorcado {
         boolean esAdivinada = false;
         // Arreglos:
         char[] letrasAdivinadas = new char[palabraSecreta.length()];
-        
+
         System.out.println("Bienvenido al juego del Ahorcado!");
         System.out.println("Tienes " + intentosMaximos + " intentos para adivinar la palabra secreta.");
-        
+
         // Estructura de control: Iterativa (Bucle)
         for (int i = 0; i < letrasAdivinadas.length; i++) {
             letrasAdivinadas[i] = '_';
@@ -24,27 +24,35 @@ public class Ahorcado {
 
         // Estructura de control: Iterativa (Bucle)
 
-        while(!esAdivinada && intentosActuales < intentosMaximos) {
+        while (!esAdivinada && intentosActuales < intentosMaximos) {
             System.out.println("Palabra a adivinar: " + String.valueOf(letrasAdivinadas));
 
             System.out.println("Introduce una letra, por favor.");
-            char letraIngresada = scanner.next().charAt(0);
-
+            char letraIngresada = Character.toLowerCase(registrarValorScanner.next().charAt(0));
             boolean letraCorrecta = false;
 
             for (int i = 0; i < letrasAdivinadas.length; i++) {
                 // Estructura de control condicional
-                if(letraIngresada == palabraSecreta.charAt(i)) {
+                if (letraIngresada == palabraSecreta.charAt(i)) {
                     letrasAdivinadas[i] = letraIngresada;
                     letraCorrecta = true;
                 }
             }
-            if(!letraCorrecta) {
+            if (!letraCorrecta) {
                 intentosActuales++;
-                System.out.println("Letra incorrecta! Te quedan " + (intentosMaximos - intentosActuales) + " intentos.");
+                System.out
+                        .println("¡Letra incorrecta! Te quedan " + (intentosMaximos - intentosActuales) + " intentos.");
+            }
+
+            if(String.valueOf(letrasAdivinadas).equals(palabraSecreta)) {
+                esAdivinada = true;
+                System.out.println("¡Felicidades! Has adivinado la palabra secreta: " + palabraSecreta);
             }
         }
 
+        if(!esAdivinada) {
+            System.out.println("¡Has perdido! La palabra secreta era: " + palabraSecreta);
+        }
 
     }
 }
