@@ -1,6 +1,6 @@
 ## Getting Started
 
-Heya! I'm currently reviewing Java, so this is just a small project for that very thing
+Heya! I'm currently reviewing Java, so this is just a small project for that very thing.
 
 ## Folder Structure
 
